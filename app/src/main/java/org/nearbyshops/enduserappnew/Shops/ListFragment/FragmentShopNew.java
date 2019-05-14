@@ -74,6 +74,8 @@ public class FragmentShopNew extends Fragment implements
 
 
 
+
+
 //    @BindView(R.id.icon_list) ImageView mapIcon;
     @BindView(R.id.shop_count_indicator) TextView shopCountIndicator;
     @BindView(R.id.slidingLayer)
