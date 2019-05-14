@@ -2,6 +2,7 @@ package org.nearbyshops.enduserappnew.Shops.SlidingLayerSort;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import org.nearbyshops.enduserappnew.MyApplication;
 import org.nearbyshops.enduserappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -16,6 +17,7 @@ public class PrefSortShopsByCategory {
 
     public static void saveSort(Context context, String sort_by)
     {
+        context = MyApplication.getAppContext();
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -32,6 +34,8 @@ public class PrefSortShopsByCategory {
 
     public static String getSort(Context context)
     {
+        context = MyApplication.getAppContext();
+
         if(context==null)
         {
             return SlidingLayerSortShops.SORT_BY_DISTANCE;
@@ -45,6 +49,7 @@ public class PrefSortShopsByCategory {
 
     public static void saveAscending(Context context, String descending)
     {
+        context = MyApplication.getAppContext();
 
         // get a handle to shared Preference
         SharedPreferences sharedPref;
@@ -63,11 +68,10 @@ public class PrefSortShopsByCategory {
 
     public static String getAscending(Context context)
     {
+        context = MyApplication.getAppContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-        String descending = sharedPref.getString("sort_descending_shops_by_category", SlidingLayerSortShops.SORT_ASCENDING);
-
-        return descending;
+        return sharedPref.getString("sort_descending_shops_by_category", SlidingLayerSortShops.SORT_ASCENDING);
     }
 
 
@@ -76,6 +80,8 @@ public class PrefSortShopsByCategory {
 
     public static void saveFilterByDeliveryType(Context context, boolean isHomeDelivery)
     {
+        context = MyApplication.getAppContext();
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -95,6 +101,8 @@ public class PrefSortShopsByCategory {
 
     public static boolean getFilterByDeliveryType(Context context)
     {
+        context = MyApplication.getAppContext();
+
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
         return sharedPref.getBoolean("filter_shops_by_delivery_type", true);
     }

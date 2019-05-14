@@ -32,6 +32,7 @@ import org.nearbyshops.enduserappnew.Model.Shop;
 import org.nearbyshops.enduserappnew.ModelCartOrder.Endpoints.OrderEndPoint;
 import org.nearbyshops.enduserappnew.ModelCartOrder.Order;
 import org.nearbyshops.enduserappnew.ModelRoles.User;
+import org.nearbyshops.enduserappnew.MyApplication;
 import org.nearbyshops.enduserappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.enduserappnew.OrderDetail.PrefOrderDetail;
 import org.nearbyshops.enduserappnew.OrderHistoryNew.SlidingLayerSort.PrefSortOrders;
@@ -300,6 +301,13 @@ public class OrdersFragmentNew extends Fragment implements AdapterOrders.NotifyC
             @Override
             public void run() {
                 swipeContainer.setRefreshing(true);
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+
 
                 onRefresh();
             }
@@ -697,6 +705,8 @@ public class OrdersFragmentNew extends Fragment implements AdapterOrders.NotifyC
 //            LoginDialog loginDialog = new LoginDialog();
 //            loginDialog.show(fm,TAG_LOGIN_DIALOG);
 //        }
+
+
 
 
         Intent intent = new Intent(getActivity(), Login.class);

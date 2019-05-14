@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import org.nearbyshops.enduserappnew.ModelServiceConfig.ServiceConfigurationLocal;
+import org.nearbyshops.enduserappnew.MyApplication;
 import org.nearbyshops.enduserappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -40,6 +41,7 @@ public class PrefServiceConfig {
 
     public static void saveServiceConfigLocal(ServiceConfigurationLocal currentTrip, Context context)
     {
+        context = MyApplication.getAppContext();
         //Creating a shared preference
 
         if(context==null)
@@ -65,6 +67,8 @@ public class PrefServiceConfig {
 
     public static ServiceConfigurationLocal getServiceConfigLocal(Context context)
     {
+        context = MyApplication.getAppContext();
+
         if(context==null)
         {
             return null;
@@ -130,6 +134,8 @@ public class PrefServiceConfig {
 
     public static String getServiceName(Context context)
     {
+        context = MyApplication.getAppContext();
+
         ServiceConfigurationLocal serviceConfigurationLocal = getServiceConfigLocal(context);
 
 
@@ -149,10 +155,9 @@ public class PrefServiceConfig {
 
     public static String getServiceURL_SDS(Context context) {
 
+        context = MyApplication.getAppContext();
+
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-
-        //service_url = "http://localareademo-env.ap-southeast-1.elasticbeanstalk.com";
-
         return sharedPref.getString(TAG_SDS_URL, SDS_URL_NEARBY_SHOPS);
     }
 
@@ -162,7 +167,9 @@ public class PrefServiceConfig {
 
     public static void saveServiceURL_SDS(String service_url, Context context)
     {
-//        Context context = MyApplication.getAppContext();
+        context = MyApplication.getAppContext();
+
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 

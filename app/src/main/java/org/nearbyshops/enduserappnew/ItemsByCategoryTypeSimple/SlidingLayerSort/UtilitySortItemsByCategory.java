@@ -17,6 +17,9 @@ public class UtilitySortItemsByCategory {
 
     public static void saveSort(Context context, String sort_by)
     {
+        context = MyApplication.getAppContext();
+
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -33,16 +36,18 @@ public class UtilitySortItemsByCategory {
 
     public static String getSort(Context context)
     {
-        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-        String sort_by = sharedPref.getString("sort_items_by_category", SlidingLayerSortItems.SORT_BY_ITEM_RATING);
+        context = MyApplication.getAppContext();
 
-        return sort_by;
+
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
+        return sharedPref.getString("sort_items_by_category", SlidingLayerSortItems.SORT_BY_ITEM_RATING);
     }
 
 
 
     public static void saveAscending(Context context, String descending)
     {
+        context = MyApplication.getAppContext();
 
         // get a handle to shared Preference
         SharedPreferences sharedPref;
@@ -61,6 +66,7 @@ public class UtilitySortItemsByCategory {
 
     public static String getAscending(Context context)
     {
+        context = MyApplication.getAppContext();
 
         if(context==null)
         {

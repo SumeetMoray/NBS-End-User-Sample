@@ -2,6 +2,7 @@ package org.nearbyshops.enduserappnew.Preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import org.nearbyshops.enduserappnew.MyApplication;
 import org.nearbyshops.enduserappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -63,12 +64,9 @@ public class PrefGeneral {
 
     public static String getServiceURL(Context context) {
 
-//        context = MyApplication.getAppContext();
+        context = MyApplication.getAppContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-
-        //service_url = "http://localareademo-env.ap-southeast-1.elasticbeanstalk.com";
-
         return sharedPref.getString(TAG_SERVICE_URL, DEFAULT_SERVICE_URL);
     }
 
@@ -81,6 +79,7 @@ public class PrefGeneral {
 
     public static void saveServiceURL(String service_url, Context context)
     {
+        context = MyApplication.getAppContext();
 
 //        Context context = MyApplication.getAppContext();
         // get a handle to shared Preference
@@ -115,6 +114,7 @@ public class PrefGeneral {
 
     public static void saveCurrencySymbol(String symbol, Context context)
     {
+        context = MyApplication.getAppContext();
         //Creating a shared preference
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPref.edit();
@@ -130,14 +130,10 @@ public class PrefGeneral {
 
     public static String getCurrencySymbol(Context context)
     {
+        context = MyApplication.getAppContext();
+
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
         return sharedPref.getString(TAG_PREF_CURRENCY, context.getString(R.string.rupee_symbol));
     }
-
-
-
-
-
-
 
 }

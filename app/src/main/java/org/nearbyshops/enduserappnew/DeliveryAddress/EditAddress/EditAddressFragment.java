@@ -24,6 +24,7 @@ import org.nearbyshops.enduserappnew.DaggerComponentBuilder;
 import org.nearbyshops.enduserappnew.DeliveryAddress.PickLocation.PickLocation;
 import org.nearbyshops.enduserappnew.ModelStats.DeliveryAddress;
 import org.nearbyshops.enduserappnew.Preferences.PrefLogin;
+import org.nearbyshops.enduserappnew.Preferences.UtilityFunctions;
 import org.nearbyshops.enduserappnew.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,9 +101,14 @@ public class EditAddressFragment extends Fragment {
 
         current_mode = getActivity().getIntent().getIntExtra(EDIT_MODE_INTENT_KEY,MODE_ADD);
 
+
+
+
         if(current_mode ==MODE_UPDATE)
         {
-            deliveryAddress = getActivity().getIntent().getParcelableExtra(DELIVERY_ADDRESS_INTENT_KEY);
+            String jsonString = getActivity().getIntent().getStringExtra(DELIVERY_ADDRESS_INTENT_KEY);
+            deliveryAddress = UtilityFunctions.provideGson().fromJson(jsonString,DeliveryAddress.class);
+
             bindDataToViews();
         }
 
