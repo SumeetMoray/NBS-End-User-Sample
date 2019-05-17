@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.wunderlist.slidinglayer.SlidingLayer;
 import okhttp3.ResponseBody;
 import org.nearbyshops.enduserappnew.API.OrderService;
@@ -46,7 +52,12 @@ import retrofit2.Response;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class OrdersFragmentNew extends Fragment implements AdapterOrders.NotifyConfirmOrder, SwipeRefreshLayout.OnRefreshListener, NotifySort, NotifySearch, RefreshFragment {
@@ -144,6 +155,44 @@ public class OrdersFragmentNew extends Fragment implements AdapterOrders.NotifyC
     }
 
 
+
+//    int AUTOCOMPLETE_REQUEST_CODE = 1;
+//
+//    @OnClick(R.id.toolbar)
+//    void toolbarClick()
+//    {
+//
+//        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME);
+//
+//// Start the autocomplete intent.
+//        Intent intent = new Autocomplete.IntentBuilder(
+//                AutocompleteActivityMode.FULLSCREEN, fields)
+//                .build(getActivity());
+//        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
+//
+//    }
+
+
+
+
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
+//            if (resultCode == RESULT_OK) {
+//                Place place = Autocomplete.getPlaceFromIntent(data);
+//                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId());
+//
+//
+//            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+//                // TODO: Handle the error.
+//                Status status = Autocomplete.getStatusFromIntent(data);
+//                Log.i(TAG, status.getStatusMessage());
+//            } else if (resultCode == RESULT_CANCELED) {
+//                // The user canceled the operation.
+//            }
+//        }
+//    }
 
 
 

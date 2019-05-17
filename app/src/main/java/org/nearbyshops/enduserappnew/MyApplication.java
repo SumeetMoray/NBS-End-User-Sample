@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
+import com.google.android.libraries.places.api.Places;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.onesignal.OSNotification;
 import com.onesignal.OSNotificationOpenResult;
@@ -62,6 +63,10 @@ public class MyApplication extends MultiDexApplication {
 
         ApplicationState.getInstance().setMyApplication(this);
 
+
+
+        // Initialize Places.
+//        Places.initialize(getApplicationContext(), "AIzaSyAHjmh3U3OVYngo6huNoEpYhscFqcV9CFA");
 
 
 

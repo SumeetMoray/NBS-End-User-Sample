@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Base64;
 import com.google.gson.Gson;
 import org.nearbyshops.enduserappnew.ModelRoles.User;
+import org.nearbyshops.enduserappnew.MyApplication;
 import org.nearbyshops.enduserappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -29,6 +30,8 @@ public class PrefLogin {
 
     public static void saveCredentials(Context context, String username, String password)
     {
+        context = MyApplication.getAppContext();
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -47,6 +50,8 @@ public class PrefLogin {
 
     public static void saveUsername(Context context, String username)
     {
+        context = MyApplication.getAppContext();
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -64,6 +69,8 @@ public class PrefLogin {
 
     public static void savePassword(Context context, String password)
     {
+        context = MyApplication.getAppContext();
+
         // get a handle to shared Preference
         SharedPreferences sharedPref;
 
@@ -84,6 +91,7 @@ public class PrefLogin {
 
     public static String getUsername(Context context)
     {
+        context = MyApplication.getAppContext();
 
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
         return sharedPref.getString("username", "");
@@ -91,6 +99,8 @@ public class PrefLogin {
 
     public static String getPassword(Context context)
     {
+        context = MyApplication.getAppContext();
+
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
         return sharedPref.getString("password", "");
     }
@@ -104,6 +114,7 @@ public class PrefLogin {
 
     public static String baseEncoding(String username,String password)
     {
+
         String credentials = username + ":" + password;
         // create Base64 encodet string
         String basic =
@@ -116,6 +127,8 @@ public class PrefLogin {
 
     public static String getAuthorizationHeaders(Context context)
     {
+        context = MyApplication.getAppContext();
+
         if(context==null)
         {
             return null;
@@ -134,6 +147,7 @@ public class PrefLogin {
 
     public static void saveUserProfile(User user, Context context)
     {
+        context = MyApplication.getAppContext();
 
         //Creating a shared preference
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
@@ -154,6 +168,8 @@ public class PrefLogin {
 
     public static User getUser(Context context)
     {
+        context = MyApplication.getAppContext();
+
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
 
         Gson gson = UtilityFunctions.provideGson();
